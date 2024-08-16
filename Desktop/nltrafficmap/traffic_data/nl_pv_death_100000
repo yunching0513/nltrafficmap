@@ -1,0 +1,24 @@
+import csv
+
+data = [
+    ["Provincie", "Verkeersdoden per 100.000 inwoners"],
+    ["Groningen", 37.141976055352],
+    ["Friesland", 38.069799749783],
+    ["Drenthe", 52.347449628212],
+    ["Overijssel", 40.461778620922],
+    ["Gelderland", 37.059948879211],
+    ["Utrecht", 22.701342170939],
+    ["Noord-Holland", 23.853326621628],
+    ["Zuid-Holland", 19.108707612619],
+    ["Zeeland", 47.742605085625],
+    ["Noord-Brabant", 37.257925467832],
+    ["Limburg", 38.53488572166],
+    ["Flevoland", 23.585676722105],
+]
+
+# 寫入到 CSV 文件
+with open('verkeersdoden_data.csv', mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
+
+print("CSV 文件已成功生成！")
