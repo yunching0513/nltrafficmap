@@ -5,14 +5,14 @@ import plotly.express as px
 import streamlit as st
 
 # 读取 CSV 文件
-data_file = '/Users/yunching0513/Desktop/nltrafficmap/traffic_data/nl_traffic_deaths_2011-2020.csv'
+data_file = "traffic_data.csv"
 df = pd.read_csv(data_file)
 
 # 将 'Provincie' 列重命名为 'Province'
 df.rename(columns={'Provincie': 'Province'}, inplace=True)
 
 # 读取 GeoJSON 文件
-geojson_file = '/Users/yunching0513/Desktop/nltrafficmap/map_data/netherlands_.geojson'
+geojson_file = 'map_data/netherlands_.geojson'
 gdf = gpd.read_file(geojson_file)
 
 # 合并地理数据和CSV数据
