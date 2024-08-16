@@ -5,7 +5,7 @@ import plotly.express as px
 import streamlit as st
 
 # 读取 CSV 文件
-data_file = 'traffic_data.csv'
+data_file = "traffic_data.csv"
 df = pd.read_csv(data_file)
 
 # 将 'Provincie' 列重命名为 'Province'
@@ -52,3 +52,4 @@ fig.update_layout(
 
 # 在 Streamlit 中显示地图
 st.plotly_chart(fig)
+
