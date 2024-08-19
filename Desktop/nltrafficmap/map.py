@@ -4,21 +4,21 @@ import json
 import plotly.express as px
 import streamlit as st
 
-# 读取 CSV 文件
+# 讀取 CSV 文件
 data_file = "Desktop/nltrafficmap/traffic_data.csv"
 df = pd.read_csv(data_file)
 
-# 将 'Provincie' 列重命名为 'Province'
+# 將 'Provincie' 列重命名為 'Province'
 df.rename(columns={'Provincie': 'Province'}, inplace=True)
 
-# 读取 GeoJSON 文件
+# 讀取 GeoJSON 文件
 geojson_file = 'Desktop/nltrafficmap/netherlands_.geojson'
 gdf = gpd.read_file(geojson_file)
 
-# 合并地理数据和CSV数据
+# 合併地理數據及CSV數據
 gdf = gdf.merge(df, on='Province')
 
-# 将所有 Timestamp 类型列转换为字符串（防止 JSON 序列化错误）
+# 將所有 Timestamp 類型列轉換為字符串（防止 JSON 序列化錯誤）
 for column in gdf.columns:
     if pd.api.types.is_datetime64_any_dtype(gdf[column]):
         gdf[column] = gdf[column].astype(str)
@@ -26,7 +26,7 @@ for column in gdf.columns:
 # GeoJSON 格式的字典
 geojson_dict = json.loads(gdf.to_json())
 
-# 使用 Plotly 绘制 Choropleth 地图
+# 使用 Plotly 繪製 Choropleth 地圖
 fig = px.choropleth(gdf,
                     geojson=geojson_dict,
                     locations=gdf.index,
@@ -35,7 +35,7 @@ fig = px.choropleth(gdf,
                     projection="mercator",
                     title="Netherlands Traffic Deaths per Province",
                     labels={"Traffic deaths per 100,000 inhabitants": "Deaths"},
-                    color_continuous_scale="Reds")  # 设置为红色
+                    color_continuous_scale="Reds")  # 設置為紅色
 
 # 设置地图边界和标题
 fig.update_geos(fitbounds="locations", visible=False)
