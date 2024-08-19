@@ -37,10 +37,10 @@ fig = px.choropleth(gdf,
                     labels={"Traffic deaths per 100,000 inhabitants": "Deaths"},
                     color_continuous_scale="Reds")  # 設置為紅色
 
-# 设置地图边界和标题
+# 設置地圖邊界和標題
 fig.update_geos(fitbounds="locations", visible=False)
 fig.update_layout(
-    margin={"r":0,"t":50,"l":0,"b":0},  # 调整 margin 以适应标题
+    margin={"r":0,"t":50,"l":0,"b":0},  # 調整 margin 以適應標題
     title={
         'text': "Netherlands Traffic Deaths per 100,000 Inhabitants 2011-2020",
         'y':0.95,
@@ -50,5 +50,5 @@ fig.update_layout(
     }
 )
 
-# 在 Streamlit 中显示地图
+# 在 Streamlit 中顯示地圖
 st.plotly_chart(fig)
